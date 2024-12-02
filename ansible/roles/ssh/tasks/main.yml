@@ -1,0 +1,30 @@
+- name: Disable root login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin"
+    line: "PermitRootLogin yes"
+
+- name: Set logging to VERBOSE
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^LogLevel"
+    line: "LogLevel VERBOSE"
+
+- name: Disable empty passwords
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^PermitEmptyPasswords"
+    line: "PermitEmptyPasswords no"
+
+- name: Disable X11Forwarding
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^X11Forwarding"
+    line: "X11Forwarding no"
+
+- name: Reload SSH without restart
+  shell: |
+    sshd -t && kill -HUP $(cat /var/run/sshd.pid)
+
+- name: Reset connection after sshd restart
+  meta: reset_connection

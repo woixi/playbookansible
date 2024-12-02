@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  ansible_target:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "2222:22"
+      - "8080:80"
+    volumes:
+      - ./data:/data

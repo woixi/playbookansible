@@ -1,0 +1,11 @@
+- name: Update and install packages
+  apt:
+    name: "{{ packages }}"
+    state: latest
+    update_cache: yes
+  vars:
+    packages:
+      - htop
+      - ncdu
+      - git
+      - nano

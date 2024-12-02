@@ -1,0 +1,6 @@
+users:
+  - name: devuser
+    shell: /bin/bash
+    state: present
+    groups: sudo
+    ssh_key: "ssh-rsa AAAA..."

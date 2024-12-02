@@ -1,0 +1,7 @@
+- name: Ensure users exist
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    state: "{{ item.state }}"
+    groups: "{{ item.groups }}"
+  loop: "{{ users }}"
